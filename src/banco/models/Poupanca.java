@@ -4,10 +4,10 @@ public class Poupanca extends Conta{
 	
 	private double taxa;
 
-	public Poupanca(int agencia, int conta, double saldo) {
-		super(agencia, conta, saldo);
+
+	
 		
-	}
+	
 
 	public double getTaxa() {
 		return taxa;
@@ -15,6 +15,13 @@ public class Poupanca extends Conta{
 
 	public void setTaxa(double taxa) {
 		this.taxa = taxa;
+	}
+
+	@Override
+	public void imprimeExtrato() {
+		System.out.println("***** Extrato da Pòupança *****");
+		super.imprimirInfoExtrato();
+		
 	}
 	
 

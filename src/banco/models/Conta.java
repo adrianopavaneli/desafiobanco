@@ -1,13 +1,16 @@
 package banco.models;
 
-public class Conta implements IConta{
-	private int agencia;
-	private int conta;
-	private double saldo;
-	public Conta(int agencia, int conta, double saldo) {
-		this.agencia = agencia;
-		this.conta = conta;
-		this.saldo = saldo;
+public abstract class Conta implements IConta{
+	
+	private static final int AGENCIA = 001;
+	private static int sequencial = 1;
+	
+	protected int agencia;
+	protected int conta;
+	protected double saldo;
+	public Conta() {
+		this.agencia = Conta.AGENCIA;
+		this.conta = sequencial++;
 	}
 	public int getAgencia() {
 		return agencia;
@@ -27,13 +30,20 @@ public class Conta implements IConta{
 	
 	
 	public void saque(double valor) {
-		
+		this.saldo -= valor;
 	}
 	public void deposita(double valor) {
-		
+		this.saldo += valor;
 	}
-	public void transfere(double valor) {
-		
+	public void transfere(double valor, Conta contaDestino) {
+		this.saque(valor);
+		contaDestino.deposita(valor);
+	}
+	
+	protected void imprimirInfoExtrato() {
+		System.out.println(String.format("Agencia: %d", this.agencia));
+		System.out.println(String.format("Conta: %d", this.conta));
+		System.out.println(String.format("Seu saldo é de: %2d", this.saldo));
 	}
 	
 	

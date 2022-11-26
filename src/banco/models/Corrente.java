@@ -2,10 +2,16 @@ package banco.models;
 
 public class Corrente extends Conta{
 
-	public Corrente(int agencia, int conta, double saldo) {
-		super(agencia, conta, saldo);
+	@Override
+	public void imprimeExtrato() {
+		System.out.println("***** Extrato da Conta Corrente *****");
+		super.imprimirInfoExtrato();
 		
 	}
+	
+	
+
+	
 
 	
 
