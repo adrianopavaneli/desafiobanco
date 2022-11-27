@@ -1,4 +1,4 @@
-package banco.models;
+package br.com.dio.desafioBanco.models;
 
 public interface IConta {
 	
