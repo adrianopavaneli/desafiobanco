@@ -14,10 +14,17 @@ public class Poupanca extends Conta{
 	
 	public Poupanca(Cliente cliente) {
 		super(cliente);
-		this.taxa = 0.5;
+		this.taxa = 0.05;
 	}
-
-	
+	@Override
+	public void deposita(double valor) {
+		this.saldo += valor +(valor * this.taxa);
+	}
+	@Override
+	public void transfere(double valor, Conta contaDestino) {
+		this.saque(valor);
+		this.deposita(valor);
+	}
 
 	
 
